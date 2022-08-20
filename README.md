@@ -1,3 +1,5 @@
+EN / [CN](./README_CN.md)
+
 # WLZY_Indoor_Environment_Monitoring_System
 For 2018 Jinling Institute of Science and Technology Development Competition
 

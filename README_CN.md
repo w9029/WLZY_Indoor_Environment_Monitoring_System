@@ -1,3 +1,5 @@
+[EN](./README.md) / CN
+
 # WLZY_Indoor_Environment_Monitoring_System
 
 
