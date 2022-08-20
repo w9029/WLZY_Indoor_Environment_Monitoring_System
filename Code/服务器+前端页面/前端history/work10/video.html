@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>沃基环境监测系统</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=0.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />    
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+    
+    <link href="./css/font-awesome.css" rel="stylesheet" />
+    
+    <link href="./css/adminia.css" rel="stylesheet" /> 
+    <link href="./css/adminia-responsive.css" rel="stylesheet" /> 
+    
+    <link href="./css/pages/dashboard.css" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+		<script src="js/login/jquery-1.8.2.min.js"></script>
+    <script src="js/language/i18next.min.js"></script>
+		<script src="js/local.js"></script>
+		<script src="js/desip.js" type="text/javascript"></script>
+		
+		<link href="./css/buttons.css" rel="stylesheet" />
+		
+		<link rel="shortcut icon" type="image/x-icon" href="img/wlzy.png" media="screen" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+	
+<div class="navbar navbar-fixed-top">
+	
+	<div class="navbar-inner">
+		
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<div class="content">
+				<a class="brand" href="./" data-i18n="language.brand">
+					沃基环境监测系统
+				</a>
+			</div>
+			<!-- 国际化选项 -->
+    	<a style="width: 70px;height: 30px;margin-right: 20px;margin-top: 7px;float: right;">
+    			<select id="language" class="select" style=" font-size:12px;width:85px;height:27px;background-color: #2c2c2c;color: white;border-color: #3c3c3c;" onchange="func()">
+						<option value="zh-CN">&nbsp;&nbsp;中文&nbsp;&nbsp;</option>
+						<option value="en-US">&nbsp;&nbsp;English&nbsp;&nbsp;</option>
+ 					</select>
+    	</a>
+
+			
+			<div class="nav-collapse">
+			
+				<ul class="nav pull-right">
+					<!--<li>
+						<a href="#"><span class="badge badge-warning">7</span></a>
+					</li>-->
+					
+					<li class="divider-vertical"></li>
+					
+					<li class="dropdown">
+						
+						<a data-toggle="dropdown" class="dropdown-toggle " href="#">
+							<img src="img/touxiang.png" width="22px" height="22px" />  <b class="caret"></b>
+						</a>
+						
+						<ul class="dropdown-menu">
+							<!--<li>
+								<a href="./account.html"><i class="icon-user"></i> Account Setting  </a>
+							</li>-->
+							<li>
+								<a href="./change_password.html"><i class="icon-lock"></i><div class="content" data-i18n="language.navbar_chg_pass">修改密码</div></a>
+							</li>
+							
+							<li class="divider"></li>
+							
+							<li>
+								<a href="login_web/login.html"><i class="icon-off"></i><div class="content" data-i18n="language.navbar_reg">注销</div></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+			</div> <!-- /nav-collapse -->
+			
+		</div> <!-- /container -->
+		
+	</div> <!-- /navbar-inner -->
+	
+</div> <!-- /navbar -->
+
+
+<div id="content">
+	
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="span3">
+				
+				<div class="account-container">
+					<div id="" style="float: left;">
+						<img src="img/wlzy.png" style="width: 60px;margin-right: 20px;" />
+					</div>
+					<div id="" style="float: left;margin-top:17px ;">
+						<h3 style="color: cornflowerblue ;font-size: 20px;">沃基WLZY</h3>
+				
+					</div>
+				
+				</div> 
+					
+					
+				<script type="text/javascript">
+					var username=localuser();
+					
+				</script>
+				
+				<hr />
+				
+				<ul id="main-nav" class="nav nav-tabs nav-stacked">
+					
+					<li>
+						<a href="./" style="height: 22px;">
+							<i class="fa fa-child" style="font-size:20px;float: left;" aria-hidden="true"></i>
+							<div class="content" data-i18n="language.tabs_index" style="float: left;margin: auto 5px;">用户信息</div>
+						</a>
+					</li>
+					
+					<li>
+						<a href="./monitor.html" style="height: 22px;">
+							<i class="fa fa-clock-o" style="font-size:20px;float: left;" aria-hidden="true"></i>
+							<div class="content" data-i18n="language.tabs_monitor" style="float: left;margin: auto 5px;">实时监测</div>
+						</a>
+					</li>
+					<li>
+						<a href="./warning.html" style="height: 22px;">
+							<i class="fa fa-bell-o" style="font-size:20px;float: left;" aria-hidden="true"></i>
+							<div class="content" data-i18n="language.tabs_warm" style="float: left;margin: auto 5px;">预警管理</div>
+						</a>
+					</li>
+					<li>
+						<a href="./history.html" style="height: 22px;">
+							<i class="fa fa-calendar" style="font-size:20px;float: left;" aria-hidden="true"></i>
+							<div class="content" data-i18n="language.tabs_history" style="float: left;margin: auto 5px;">历史信息</div>
+						</a>
+					</li>
+
+					<li class="active">
+						<a href="./video.html" style="height: 22px;">
+							<i class="fa fa-video-camera" style="font-size:20px;float: left;" aria-hidden="true"></i>
+							<div class="content" data-i18n="language.tabs_video" style="float: left;margin: auto 5px;">视频监测</div>
+						</a>
+					</li>
+
+					<li>
+						<a href="./us.html" style="height: 22px;">
+							<i class="fa fa-users" style="font-size:20px;float: left;" aria-hidden="true"></i>
+							<div class="content" data-i18n="language.tabs_us" style="float: left;margin: auto 5px;">关于我们</div>
+						</a>
+					</li>
+					
+				</ul>	
+				
+				<hr />
+				
+				<div class="sidebar-extra">
+						<div class="content" data-i18n="language.tabs_char1">使用中如果遇到问题，请通过以下联系方式以得到技术支持：</div>
+						<div class="content" data-i18n="language.tabs_char2">QQ:578824311</div>
+						<div class="content" data-i18n="language.tabs_char3">邮箱:578824311@qq.com</div>
+						<div class="content" data-i18n="language.tabs_char4">电话:18851730678</div>
+				</div> <!-- .sidebar-extra -->
+				
+				<br />
+		
+			</div> <!-- /span3 -->
+			
+			
+			
+			<div class="span9">
+				
+				<h1 class="page-title"style="height: 36px;">
+					<i class="icon-home" style="float: left;"></i>
+					<div class="content" data-i18n="language.tabs_video" style="float: left;margin: auto 5px;">视频监测</div>
+				</h1>
+				
+				<div class="stat-container">
+										
+					<div class="stat-holder">						
+						<div class="stat">							
+							<div class="content" data-i18n="language.index_user">用户名</div>			
+							<span id="username_span2">name</span>		
+							<script type="text/javascript">
+								document.getElementById("username_span2").innerHTML=username;
+	
+							</script>						
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+					<div class="stat-holder">						
+						<div class="stat">								
+							<div class="content" data-i18n="language.index_reg_date">注册时间</div>
+							<span id="registTime">0000.0.0</span>		
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+					<div class="stat-holder">						
+						<div class="stat">							
+							<div class="content" data-i18n="language.index_own_equ">您拥有的设备</div>
+							<span id="devCount">0</span>							
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+					<div class="stat-holder">						
+						<div class="stat">							
+							<div class="content" data-i18n="language.index_run_equ">正在运行的设备</div>
+							<span id="runningCount">0</span>							
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+				</div> <!-- /stat-container -->
+				
+				
+				<div class="widget widget-table">
+					<div class="widget-header">
+						<i class="icon-th-list"></i>
+						<h3>设备状态</h3>
+					</div> 
+					
+					<div class="widget-content">
+					
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th><div class="content" data-i18n="language.status1">设备号</div></th>
+									<th><div class="content" data-i18n="language.status2">MAC地址</div></th>
+									<th><div class="content" data-i18n="language.status3">运行状态</div></th>
+									<th><div class="content" data-i18n="language.status4">最后运行时间</div></th>
+									<th></th>
+									<!--<th>&nbsp;</th>-->
+								</tr>
+							</thead>
+							
+							<tbody id="tbody_1">
+								<tr>
+									<td>无</td>
+									<td>无</td>
+									<td>无</td>
+									<td>无</td>
+									<td>
+										<a><div class="content" data-i18n="language.search">查询</div></a>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+					
+					</div>
+					
+				</div> 
+				<center>
+					<button id="openV" class="button button-small" onclick="openV()" style="visibility: hidden;">打开摄像头</button>
+					<button id="closeV" class="button button-small" onclick="closeV()" style="visibility: hidden;">关闭摄像头</button>
+					<!--<button id="setUrl" onclick="setUrl()" style="visibility: hidden;">查看监控画面</button>-->
+					
+				</center>
+				
+				<script type="text/javascript">
+					
+//					function searchMonitor(mac)
+//					{
+//						alert(mac);
+//						
+//					}
+					
+					var ajaxParams={};
+					ajaxParams['name']=username;//传字符串到String
+					jQuery.ajax({ 
+						type:"POST",
+						url:"http://"+desip+":8080/dev/find",
+						data:ajaxParams,
+						dataType:"text",
+						success:function(data){
+							//var num=2.456789;
+							//alert(num.toFixed(2));
+							var s="";
+							var LastTime = "";
+							var runningcount=0;
+							//alert(data);
+							var Array_devs = JSON.parse(data);
+							//alert(Array_devs[0].lasttime);
+							//console.log(Array_devs[0]);
+							if(Array_devs != null)
+							for(var i=0;i<Array_devs.length;i++)
+							{
+								var Status="";
+								
+								if(Array_devs[i].status == 1)
+								{
+									Status="正在运行";
+									runningcount++;
+									LastTime = "当前";
+								}
+								else 
+								{
+									Status="与服务器断开连接";
+									LastTime = Array_devs[i].lasttime;
+								}
+								s=s+"<tr><td>" + Array_devs[i].number +"</td><td>" + Array_devs[i].mac +"</td><td>"+ Status +"</td><td>" + LastTime +"</td>";
+								s=s+"<td><a style='cursor: pointer;' onclick=SetButtons("+ "'" +Array_devs[i].mac+ "'" +")>查询</a></td></tr>";
+							
+							}
+							if(Array_devs!=null && Array_devs.length > 0)
+							{	
+								document.getElementById("tbody_1").innerHTML = s;
+								document.getElementById("devCount").innerHTML = Array_devs.length;
+								document.getElementById("runningCount").innerHTML = runningcount;
+							}
+						}
+					})
+					
+					ajaxParams['name']=username;//传字符串到String
+					jQuery.ajax({ 
+						type:"GET",
+						url:"http://"+desip+":8080/user/regtime",
+						data:ajaxParams,
+						dataType:"text",
+						success:function(data){
+							document.getElementById("registTime").innerHTML = data.split(" ")[0];
+						}
+					})
+					
+				</script>
+				
+				<center>
+					<div id="textV" style="visibility: hidden;">视频监控实时画面</div>
+					<p id="videourl" style="visibility: hidden;"></p>
+				</center>
+				
+				<script type="text/javascript">
+					var chooseMac;
+					
+					function openV()
+					{
+						ajaxParams['mac']=chooseMac;//传字符串到String
+						ajaxParams['controll']="on";//把数组转为字符串传到后台数组
+						jQuery.ajax({
+							type:"POST",
+							url:"http://"+desip+":8080/dev/video",
+							data:ajaxParams,
+							dataType:"text",
+							
+						})
+						setUrl();
+					}
+					
+					function closeV()
+					{
+						ajaxParams['mac']=chooseMac;//传字符串到String
+						ajaxParams['controll']="off";//把数组转为字符串传到后台数组
+						jQuery.ajax({
+							type:"POST",
+							url:"http://"+desip+":8080/dev/video",
+							data:ajaxParams,
+							dataType:"text",
+							
+						})
+						document.getElementById("videourl").style.visibility="hidden";
+					}
+
+					
+					function SetButtons(mac)
+					{
+						//显示打开/关闭摄像头按钮 和文本
+						document.getElementById("openV").style.visibility="visible";
+						document.getElementById("closeV").style.visibility="visible";
+						//document.getElementById("setUrl").style.visibility="visible";
+						document.getElementById("textV").style.visibility="visible";
+						chooseMac=mac;
+					}
+					
+					function setUrl()
+					{	
+						//得到推流地址
+						var mac = chooseMac;
+						ajaxParams['mac']=mac;//传字符串到String
+						jQuery.ajax({
+							type:"POST",
+							url:"http://"+desip+":8080/dev/url",
+							data:ajaxParams,
+							dataType:"text",
+							success:function(data){
+								document.getElementById("videourl").innerHTML='<img src="http://'+data+':8080/?action=stream" width="100%" height="480px">';
+								document.getElementById("videourl").style.visibility="visible";
+								//alert('<img src="http://'+data+':8080/?action=stream" width="640px" height="480px">');
+							}
+						})
+					}
+				
+				</script>
+				
+			</div> <!-- /span9 -->
+			
+		</div> <!-- /row -->
+		
+	</div> <!-- /container -->
+	
+</div> <!-- /content -->
+					
+	
+<div id="footer">
+	<center>
+		<hr />
+		<div class="container content" style="width: 170px;height: 30px;">
+			<p  data-i18n="language.footer_brand" style="float: left;">环境监测系统 </p>
+			<a href="http://www.baidu.com/" target="_blank" title="a" data-i18n="language.footer_contect" style="float: left;margin-left: 10px;">联系我们</a> 
+		</div> <!-- /container -->
+		
+	</center>
+	
+</div> <!-- /footer -->
+<script>
+	change(localLanguage);
+	if(localLanguage == 'en-US'){
+		document.getElementById("language")[1].selected=true;
+	}else{
+		document.getElementById('language')[0].selected=true;
+	}
+</script>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="./js/jquery-1.7.2.min.js"></script>-->
+<script src="./js/excanvas.min.js"></script>
+<script src="./js/jquery.flot.js"></script>
+<script src="./js/jquery.flot.pie.js"></script>
+<script src="./js/jquery.flot.orderBars.js"></script>
+<script src="./js/jquery.flot.resize.js"></script>
+
+
+<script src="./js/bootstrap.js"></script>
+<script src="./js/charts/bar.js"></script>
+
+  </body>
+</html>

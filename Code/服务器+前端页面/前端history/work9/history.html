@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>环境监测系统</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />    
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+    
+    
+    <link href="./css/font-awesome.css" rel="stylesheet" />
+    
+    <link href="./css/adminia.css" rel="stylesheet" /> 
+    <link href="./css/adminia-responsive.css" rel="stylesheet" /> 
+    
+    <link href="./css/pages/dashboard.css" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+		<script src="js/login/jquery-1.8.2.min.js"></script>
+		
+		<link rel="shortcut icon" type="image/x-icon" href="./img/logo/eye.png" media="screen" />
+
+		<!--loading img-->
+		<link href="./css/cube.css" rel="stylesheet" />
+		<link href="./css/buttons.css" rel="stylesheet" />
+	  <script src="js/prefixfree.min.js"></script>
+	  
+		<script src="js/desip.js" type="text/javascript"></script>
+
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+	
+<div class="navbar navbar-fixed-top">
+	
+	<div class="navbar-inner">
+		
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+			</a>
+			
+			<a class="brand" href="./">
+				<img src="img/logo/logo.png" style="width: 22px;"/>
+				环境监测系统
+			</a>
+			
+			
+			<div class="nav-collapse">
+			
+				<ul class="nav pull-right">
+					<!--<li>
+						<a href="#"><span class="badge badge-warning">7</span></a>
+					</li>-->
+					
+					<li class="divider-vertical"></li>
+					
+					<li class="dropdown">
+						
+						<a data-toggle="dropdown" class="dropdown-toggle " href="#">
+							<img src="img/touxiang.png" width="22px" height="22px" />  <b class="caret"></b>							
+						</a>
+						
+						<ul class="dropdown-menu">
+							<!--<li>
+								<a href="./account.html"><i class="icon-user"></i> Account Setting  </a>
+							</li>-->
+							
+							<li>
+								<a href="./change_password.html"><i class="icon-lock"></i>修改密码</a>
+							</li>
+							
+							<li class="divider"></li>
+							
+							<li>
+								<a href="login_web/login.html"><i class="icon-off"></i>注销</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+			</div> <!-- /nav-collapse -->
+			
+		</div> <!-- /container -->
+		
+	</div> <!-- /navbar-inner -->
+	
+</div> <!-- /navbar -->
+
+
+<div id="content">
+	
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="span3">
+				
+				<div class="account-container">
+					<div class="account-details">
+				    <!--小图标-->
+					  <i class="fa fa-address-card-o" style="font-size:20px; aria-hidden=true"></i>
+						<span id="username_span" class="account-name">user name</span>
+						<script type="text/javascript">
+							
+								var username;
+								
+								function getCookie(cookieName) {
+								    var strCookie = document.cookie;
+								    var arrCookie = strCookie.split("; ");
+								    for(var i = 0; i < arrCookie.length; i++){
+								        var arr = arrCookie[i].split("=");
+								        if(cookieName == arr[0]){
+								            return arr[1];
+								        }
+								    }
+								    return "";
+								}
+								
+								username=getCookie("username");
+
+								document.getElementById("username_span").innerHTML=username;
+								
+						</script>
+						<span class="account-role">您好</span>
+					</div>
+				</div> 
+				
+				<hr />
+				
+				<ul id="main-nav" class="nav nav-tabs nav-stacked">
+					
+					<li>
+						<a href="./index.html">
+							<i class="fa fa-child" style="font-size:20px; aria-hidden=true"></i>
+							用户信息		
+						</a>
+					</li>
+					<li>
+						<a href="./monitor.html">
+							<i class="fa fa-clock-o" style="font-size:20px; aria-hidden=true"></i>
+							实时监测
+						</a>
+					</li>
+					
+					<li>
+						<a href="./warning.html">
+							<i class="fa fa-bell-o" style="font-size:20px; aria-hidden=true"></i>
+							预警管理
+						</a>
+					</li>
+
+					<li class="active">
+						<a href="./history.html">
+							<i class="fa fa-calendar" style="font-size:20px; aria-hidden=true"></i>
+							历史信息	
+						</a>
+					</li>
+
+					<li>
+						<a href="./video.html">
+							<i class="fa fa-video-camera" style="font-size:20px; aria-hidden=true"></i>
+							视频监测
+						</a>
+					</li>
+
+					<li>
+						<a href="./us.html">
+							<i class="fa fa-users" style="font-size:20px; aria-hidden=true"></i>
+							关于我们
+						</a>
+					</li>
+				</ul>	
+				
+				<hr />
+				
+				<div class="sidebar-extra">
+					<p>
+						使用中如果遇到问题，请通过以下联系方式以得到技术支持：
+						<br />
+						QQ:578824311
+						<br />
+						邮箱:578824311@qq.com
+						<br />
+						电话:18851730678
+					
+					</p>
+				</div> <!-- .sidebar-extra -->
+				
+				<br />
+		
+			</div> <!-- /span3 -->
+			
+			
+			
+			<div class="span9">
+				
+				<h1 class="page-title">
+					<i class="icon-home"></i>
+					历史信息				
+				</h1>
+				
+				<div class="stat-container">
+										
+					<div class="stat-holder">						
+						<div class="stat">							
+							用户名						
+							<span id="username_span2">name</span>		
+							<script type="text/javascript">
+								document.getElementById("username_span2").innerHTML=username;
+	
+							</script>
+						</div>					
+					</div> 
+					
+					<div class="stat-holder">						
+						<div class="stat">								
+							注册时间
+							<span id="registTime">0000.0.0</span>		
+						</div>					
+					</div>
+					
+					<div class="stat-holder">						
+						<div class="stat">							
+							您拥有的设备							
+							<span id="devCount">0</span>							
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+					<div class="stat-holder">						
+						<div class="stat">							
+							正在运行的设备							
+							<span id="runningCount">0</span>							
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+				</div> <!-- /stat-container -->
+				
+
+				
+				
+				
+				<div class="widget widget-table">
+					<div class="widget-header">
+						<i class="icon-th-list"></i>
+						<h3>设备状态</h3>
+					</div> 
+					
+					<div class="widget-content">
+					
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>设备号</th>
+									<th>MAC地址</th>
+									<th>运行状态</th>
+									<th>最后运行时间</th>
+									<th></th>
+									<!--<th>&nbsp;</th>-->
+								</tr>
+							</thead>
+							
+							<tbody id="tbody_1">
+								<tr>
+									<td>无</td>
+									<td>无</td>
+									<td>无</td>
+									<td>无</td>
+									<td>
+										<a>查询</a>
+									</td>
+									<!--<td class="action-td">
+										<a href="javascript:;" class="btn btn-small btn-warning">
+											<i class="icon-ok"></i>								
+										</a>					
+										<a href="javascript:;" class="btn btn-small">
+											<i class="icon-remove"></i>						
+										</a>
+									</td>-->
+								</tr>
+								
+
+							</tbody>
+						</table>
+					
+					</div>
+					
+				</div> 
+				
+				
+<script type="text/javascript">
+	
+	var search_mac = null;
+	var runningcount = 0;
+	var ajaxParams={};
+	ajaxParams['name']=username;//传字符串到String
+	jQuery.ajax({ 
+		type:"POST",
+		url:"http://"+ desip +":8080/dev/find",
+		data:ajaxParams,
+		dataType:"text",
+		success:function(data){
+			//var num=2.456789;
+			//alert(num.toFixed(2));
+			var s="";
+			var lastTime = "";
+			var Array_devs = JSON.parse(data);
+			//alert(Array_devs[0].lasttime);
+			//console.log(Array_devs[0]);
+			if(Array_devs != null)
+			for(var i=0;i<Array_devs.length;i++)
+			{
+				var Status="";
+				
+				if(Array_devs[i].status == 1)
+				{
+					Status="正在运行";
+					LastTime = "当前";
+					runningcount++;
+				}
+				else 
+				{
+					Status="与服务器断开连接";
+					LastTime = Array_devs[i].lasttime;
+				}
+				s=s+"<tr><td>" + Array_devs[i].number + 
+				"</td><td>" + Array_devs[i].mac + 
+				"</td><td>" + Status +
+				"</td><td>" + LastTime +
+				'</td><td><a style="cursor: pointer;" onclick="show('+ "'" +Array_devs[i].mac+ "'" +')">查询</a></td></tr>';
+				//'</td><td><a onclick="test()">查询</a></td></tr>';
+			
+			}
+			//alert(Array_devs);
+			if(Array_devs!=null && Array_devs.length > 0)
+			{
+				document.getElementById("tbody_1").innerHTML = s;
+				document.getElementById("devCount").innerHTML = Array_devs.length;
+				document.getElementById("runningCount").innerHTML = runningcount;
+			}
+		}
+	})
+	
+	ajaxParams['name']=username;//传字符串到String
+	jQuery.ajax({ 
+		type:"GET",
+		url:"http://"+desip+":8080/user/regtime",
+		data:ajaxParams,
+		dataType:"text",
+		success:function(data){
+			document.getElementById("registTime").innerHTML = data.split(" ")[0];
+		}
+	})
+	
+	
+	function show(form_i)
+	{
+		document.getElementById("SearchType").style.display="block";
+		
+		document.getElementById("search_first").style.display="none";
+		document.getElementById("search_second").style.display="none";
+		document.getElementById("search_third").style.display="none";
+		
+		search_mac = form_i;
+	}
+	
+	
+	/*
+	 * 第一种查询方式：按固定时间次数传发
+	 * 交互方式:		ajax
+	 * 图表：			折线图
+	 */
+	function firstFormConnect()
+	{
+		var mdui = document.getElementById('first_form');
+		var now =new Date();
+		var ajaxParams={};
+		ajaxParams['needtime']=mdui.value;//传需要显示时间次数
+		ajaxParams['nowtime']=Math.round(now.getTime()/1000);
+		ajaxParams['mac']=search_mac;
+		jQuery.ajax({
+		type:"POST",
+		url:"http://"+ desip +":8080/find/default",
+		data:ajaxParams,
+		dataType:"Text",
+		beforeSend:function(){
+    	var loadimg = document.getElementById('loading');
+    	loadimg.style.display='block';
+    	var table = document.getElementById('history_table');
+    	table.style.display = 'none';
+    },
+		success:function(data){
+			var loadimg = document.getElementById('loading');
+    	var table= document.getElementById('history_table');
+    	loadimg.style.display = 'none';
+    	table.style.display = 'block';
+			var array=JSON.parse(data);
+			var table_date=new Array();
+			var table_ammonia=new Array();
+			var table_humidity=new Array();
+			var table_temperature=new Array();
+			for(var i=0;i < array.length ; i++)
+			{
+				table_date[i]=getLocalTime(array[i].time);
+				table_ammonia[i]=array[i].ammonia.toFixed(1);
+				table_humidity[i]=array[i].humidity.toFixed(1);
+				table_temperature[i]=array[i].temperature.toFixed(1);
+			}
+				
+			var dom = document.getElementById("history_table");
+			dom.style.display="block";
+			document.getElementById("container").style.display="none";
+			
+			myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+			    title: {
+			        text: '折线图堆叠'
+			    },
+			    tooltip: {
+			        trigger: 'axis'
+			    },
+			    legend: {
+			        data:['氨气','湿度','温度']
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '6%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    toolbox: {
+			        feature: {
+		            saveAsImage: {},
+		            dataView:{
+		    					show:true,
+		    					readOnly:false
+		    				},
+		    				dataZoom: {
+		                yAxisIndex: 'none'
+		            },
+		            restore: {},
+		    				mark: { show: true }
+		        }
+			    },
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data: []
+			    },
+			    yAxis: {
+			        type: 'value'
+			    },
+			    series: [
+			        {
+			            name:'氨气',
+			            type:'line',
+			            //stack: '总量',
+			            data:[]
+			        },
+			        {
+			            name:'湿度',
+			            type:'line',
+			            stack: '总量',
+			            data:[]
+			        },
+			        {
+				           name:'温度',
+				           type:'line',
+				           //stack: '总量',
+				           data:[]
+				       }
+				   ]
+			};	
+			option.xAxis.data=table_date;
+			option.series[0].data=table_ammonia;
+			option.series[1].data=table_humidity;
+			option.series[2].data=table_temperature;
+			if (option && typeof option === "object") {
+			  myChart.setOption(option, true);
+				}		
+				myChart.resize();
+			}
+		})
+	}
+
+	/*
+	 * 第二种查询方式：用户可按天查看任意数据
+	 * 交互方式：	ajax
+	 * 图标：			折线图
+	 */
+	function secondFormConnect()
+	{
+		var mdui = document.getElementById('second_form');
+		var time = new Date(mdui.value).getTime();
+		var ajaxParams={};
+		ajaxParams['sec']=3600;//传需要显示时间次数
+		ajaxParams['start']=time/1000;
+		ajaxParams['mac']=search_mac;
+		console.log(ajaxParams);
+		jQuery.ajax({
+		type:"POST",
+		url:"http://"+desip+":8080/find/custom",
+		data:ajaxParams,
+		dataType:"Text",
+		beforeSend:function(){
+    	var loadimg = document.getElementById('loading');
+    	loadimg.style.display='block';
+    	var table = document.getElementById('history_table');
+    	table.style.display = 'none';
+    },
+		success:function(data){
+			var loadimg = document.getElementById('loading');
+    	var table= document.getElementById('history_table');
+    	loadimg.style.display = 'none';
+    	table.style.display = 'block';
+			var array=JSON.parse(data);
+			var table_date=new Array();
+			var table_ammonia=new Array();
+			var table_humidity=new Array();
+			var table_temperature=new Array();
+			for(var i=0;i < array.length ; i++)
+			{
+				table_date[i]=getLocalTime(array[i].time);
+				table_ammonia[i]=array[i].ammonia.toFixed(1);
+				table_humidity[i]=array[i].humidity.toFixed(1);
+				table_temperature[i]=array[i].temperature.toFixed(1);
+			}
+				
+			var dom = document.getElementById("history_table");
+			dom.style.display="block";
+			document.getElementById("container").style.display="none";
+			
+			myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+			    title: {
+			        text: '折线图堆叠'
+			    },
+			    tooltip: {
+			        trigger: 'axis'
+			    },
+			    legend: {
+			        data:['氨气','湿度','温度']
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '6%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    toolbox: {
+			        feature: {
+		            saveAsImage: {},
+		            dataView:{
+		    					show:true,
+		    					readOnly:false
+		    				},
+		    				dataZoom: {
+		                yAxisIndex: 'none'
+		            },
+		            restore: {},
+		    				mark: { show: true }
+		        }
+			    },
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data: []
+			    },
+			    yAxis: {
+			        type: 'value'
+			    },
+			    series: [
+			        {
+			            name:'氨气',
+			            type:'line',
+			            //stack: '总量',
+			            data:[]
+			        },
+			        {
+			            name:'湿度',
+			            type:'line',
+			            stack: '总量',
+			            data:[]
+			        },
+			        {
+				           name:'温度',
+				           type:'line',
+				           //stack: '总量',
+				           data:[]
+				       }
+				   ]
+			};	
+			option.xAxis.data=table_date;
+			option.series[0].data=table_ammonia;
+			option.series[1].data=table_humidity;
+			option.series[2].data=table_temperature;
+			if (option && typeof option === "object") {
+			  myChart.setOption(option, true);
+			}
+			myChart.resize();
+
+		}
+		})
+	}
+
+	function getLocalTime(nS)
+	{
+	
+	    //return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " "); 
+			return new Date(parseInt(nS) * 1000).toLocaleString().split(" ")[1];
+	}
+</script>
+
+				
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+				<div class="widget">
+										
+					<div class="widget-header">
+						<i class="icon-signal"></i>
+						<h3>历史信息记录</h3>
+					</div> <!-- /widget-header -->
+							
+							
+					<div id="SearchType" style="padding:10px; text-align: center; vertical-align:middle;display:none;">
+						<button id="searchT1" class="button button-small" onclick="searchT1()">查询最近的记录</button>
+						<button id="searchT2" class="button button-small" onclick="searchT2()">查询过去某一天的记录</button>
+						<button id="searchT3" class="button button-small" style="border-color: gray;" onclick="searchT3()">查询某一时间的详细记录(每秒)</button>
+					</div>
+					
+					<script type="text/javascript">
+						function searchT1()
+						{
+							document.getElementById("search_first").style.display="block";
+							
+							document.getElementById("search_second").style.display="none";
+							document.getElementById("search_third").style.display="none";
+							
+							document.getElementById("container").style.display="none";
+							document.getElementById("history_table").style.display="none";
+							
+						}
+						
+						function searchT2()
+						{
+							document.getElementById("search_second").style.display="block";
+							
+							document.getElementById("search_first").style.display="none";
+							document.getElementById("search_third").style.display="none";
+							
+							document.getElementById("container").style.display="none";
+							document.getElementById("history_table").style.display="none";
+							
+						}
+						
+						function searchT3()
+						{
+							document.getElementById("search_third").style.display="block";
+							
+							document.getElementById("search_first").style.display="none";
+							document.getElementById("search_second").style.display="none";
+							
+							document.getElementById("container").style.display="none";
+							document.getElementById("history_table").style.display="none";
+							
+						}
+						
+						
+					</script>
+							
+					<div id="search_first" style="padding:10px; text-align: center; vertical-align:middle;display: none;">
+
+						<select id="first_form" style="width: 130px;">
+							<option value="6">过去6小时</option>
+							<option value="12">过去12小时</option>
+							<option value="24">过去24小时</option>
+						</select>
+						<button type="button" class="button button-small" onclick="firstFormConnect()">查询</button><br />
+					</div>
+					
+					<div id="search_second" style="padding:10px; text-align: center; vertical-align:middle;display: none;">
+						<input id="second_form" type="date" min="2019-01-06" value="2019-01-13" style="width: 120px;"/>
+						<button type="button" class="button button-small" onclick="secondFormConnect()">查询</button><br />
+					</div>
+					
+					<div id="search_third" style="padding:10px; text-align: center; vertical-align:middle;display: none;">
+						<input id="starttime" style="width: 180px;" type="datetime-local" min="2019-01-06T00:00:00" value="2019-01-13T00:00:00"/>
+   					<button class="button button-small" onclick="get_time()">查询</button>
+       			<div id="container" style="height: 420px;display: none;" ></div>
+					</div>
+					
+					<script>
+							var format = "";
+	
+							//构造符合datetime-local格式的当前日期
+							function getFormat(){
+							format = "";
+							format_year = "";
+							var nTime = new Date();
+							format += nTime.getFullYear()+"-";
+							format += (nTime.getMonth()+1)<10?"0"+(nTime.getMonth()+1):(nTime.getMonth()+1);
+							format += "-";
+							format += nTime.getDate()<10?"0"+(nTime.getDate()):(nTime.getDate());
+							format_year = format;
+							format += "T";
+							format += nTime.getHours()<10?"0"+(nTime.getHours()):(nTime.getHours());
+							format += ":";
+							format += nTime.getMinutes()<10?"0"+(nTime.getMinutes()):(nTime.getMinutes());
+							format += ":00";
+							
+							
+							format_min = "";
+							format_min_year = "";
+							var nTime = new Date();
+							var Date7 = new Date(nTime.getTime()-144*60*60*1000);
+							format_min += Date7.getFullYear()+"-";
+							format_min += (Date7.getMonth()+1)<10?"0"+(Date7.getMonth()+1):(Date7.getMonth()+1);
+							format_min += "-";
+							format_min += Date7.getDate()<10?"0"+(Date7.getDate()):(Date7.getDate());
+							format_min_year = format_min;
+							format_min += "T";
+							format_min += Date7.getHours()<10?"0"+(Date7.getHours()):(Date7.getHours());
+							format_min += ":";
+							format_min += Date7.getMinutes()<10?"0"+(Date7.getMinutes()):(Date7.getMinutes());
+							format_min += ":00";
+							
+						}
+							
+						getFormat();
+						document.getElementById("starttime").max = format;//赋初始值
+						document.getElementById("starttime").value = format;
+						//alert(format_year);
+						document.getElementById("second_form").max = format_year;
+						document.getElementById("second_form").value= format_year;
+						
+						document.getElementById("starttime").min = format_min;//赋初始值
+						
+						//alert(format_year);
+						document.getElementById("second_form").min = format_min_year;
+						
+						
+					</script>
+					
+				
+					<div id="history_table" style="height: 420px ;display: none;" ></div> 	<!--历史信息图表-->		
+					<div id="loading" style="display: none;" class='base'>
+  					<div class='cube'></div>
+  				<div class='cube'></div>
+  				<div class='cube'></div>
+					<div class='cube'></div>
+					<div class='cube'></div>
+					<div class='cube'></div>
+					<div class='cube'></div>
+					<div class='cube'></div>
+					<div class='cube'></div>
+       		</div>
+					
+					<script type="text/javascript">
+						var myChart;
+	       		var sendtime;
+	       		
+	       		
+	       	window.onresize = function() {
+							myChart.resize();
+					}
+	       	
+	       	function get_time()
+	       	{
+	       		var time_value = document.getElementById('starttime');
+	       		//alert(time_value.value);
+	       		sendtime = new Date(time_value.value).getTime();
+	       		sendtime=sendtime/1000;
+	       		//alert(new Date());
+	       		
+						var dom = document.getElementById("container");
+						dom.style.display="block";
+						document.getElementById("history_table").style.display="none";
+						myChart = echarts.init(dom);
+						
+						var app = {};
+						option = null;
+						var base = +new Date();
+						
+						var airdata = [];
+						    var mdui = document.getElementById('container');
+						    var now =new Date();
+						    var ajaxParams={};
+						    ajaxParams['lasttime']=sendtime;//起始时间
+						    ajaxParams['mac']=search_mac;
+						    jQuery.ajax({
+						    type:"POST",
+						    url:"http://"+desip+":8080/find/bigdata",
+						    data:ajaxParams,
+						    dataType:"Text",
+						    beforeSend:function(){
+    							var loadimg = document.getElementById('loading');
+    							loadimg.style.display='block';
+						    	var table = document.getElementById('container');
+						    	table.style.display = 'none';
+    						},
+						    success:function(data){
+						    		var loadimg = document.getElementById('loading');
+							    	var table= document.getElementById('container');
+							    	loadimg.style.display = 'none';
+							    	table.style.display = 'block';
+						        var array=JSON.parse(data);
+						        var table_date=new Array();
+						        var table_ammonia=new Array();
+						        var table_humidity=new Array();
+						        var table_temperature=new Array();
+						        for(var i=0;i < array.length ; i++)
+						        {
+						            table_date[i]=getLocalTime(array[i].time);
+						            table_ammonia[i]=array[i].ammonia.toFixed(1);
+						            table_humidity[i]=array[i].humidity.toFixed(1);
+						            table_temperature[i]=array[i].temperature.toFixed(1);
+						        }
+						
+						        
+						        // for(var i = 0; i < array.length; i++) 
+						        // {
+						        //     date.push(table_data[i]);
+						        //     data.push(table_temperature[i]);
+						        // }
+						
+						        option = {
+						            tooltip: {
+						                trigger: 'axis',
+						                position: function (pt) {
+						                    return [pt[0], '10%'];
+						                }
+						            },
+						            legend: {
+						                data:['温度','湿度','氨气']
+						            },
+						            title: {
+						                left: 'left',
+						                text: '大数据量面积图',
+						            },
+						            toolbox: {
+						                feature: {
+						                    dataZoom: {
+						                        yAxisIndex: 'none'
+						                    },
+						                    restore: {},
+						                    saveAsImage: {}
+						                }
+						            },
+						            xAxis: {
+						                type: 'category',
+						                boundaryGap: false,
+						                data: table_date
+						            },
+						            yAxis: {
+						                type: 'value',
+						                boundaryGap: [0, '100%']
+						            },
+						            dataZoom: [{
+						                type: 'inside',
+						                start: 0,
+						                end: 10
+						            }, {
+						                start: 0,
+						                end: 10,
+						                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+						                handleSize: '80%',
+						                handleStyle: {
+						                    color: '#fff',
+						                    shadowBlur: 3,
+						                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+						                    shadowOffsetX: 2,
+						                    shadowOffsetY: 2
+						                }
+						            }],
+						            series: [
+						                {
+						                    name:'温度',
+						                    type:'line',
+						                    smooth:true,
+						                    symbol: 'none',
+						                    sampling: 'average',
+						                    itemStyle: {
+						                        color: 'rgb(255, 70, 131)'
+						                    },
+						                    
+						                    data: table_temperature
+						                },
+						                {
+						                    name:'湿度',
+						                    type:'line',
+						                    smooth:true,
+						                    symbol: 'none',
+						                    sampling: 'average',
+						                    itemStyle: {
+						                        color: 'rgb(100,149,237)'
+						                    },
+						                    
+						                    data: table_humidity
+						                },
+						                {
+						                    name:'氨气',
+						                    type:'line',
+						                    smooth:true,
+						                    symbol: 'none',
+						                    sampling: 'average',
+						                    itemStyle: {
+						                        color: 'rgb(244,164,96)'
+						                    },
+						                    
+						                    data: table_ammonia
+						                }
+						            ]
+						        };
+						        if (option && typeof option === "object")
+						        {
+						            myChart.setOption(option, true);
+						        }
+						        myChart.resize();
+						    } 
+						})
+						    
+						}
+				       	
+						function getLocalTime(nS)
+						{
+						
+						    //return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " "); 
+						        return new Date(parseInt(nS) * 1000).toLocaleString().split(" ")[1];
+						}
+       </script>
+					
+					
+				</div> <!-- /widget -->
+				
+				
+			</div> <!-- /span9 -->
+			
+			
+		</div> <!-- /row -->
+		
+	</div> <!-- /container -->
+	
+</div> <!-- /content -->
+					
+	
+<div id="footer">
+	<center>
+		<div class="container">				
+			<hr />
+			<p>
+				环境监测系统 
+				<a href="http://www.baidu.com/" target="_blank" title="a">联系我们</a> 
+			</p>
+		</div> <!-- /container -->
+		
+	</center>
+	
+</div> <!-- /footer -->
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./js/jquery-1.7.2.min.js"></script>
+<script src="./js/excanvas.min.js"></script>
+<script src="./js/jquery.flot.js"></script>
+<script src="./js/jquery.flot.pie.js"></script>
+<script src="./js/jquery.flot.orderBars.js"></script>
+<script src="./js/jquery.flot.resize.js"></script>
+
+
+<script src="./js/bootstrap.js"></script>
+<script src="./js/charts/bar.js"></script>
+
+  </body>
+</html>                                                                                                                                                                                            	

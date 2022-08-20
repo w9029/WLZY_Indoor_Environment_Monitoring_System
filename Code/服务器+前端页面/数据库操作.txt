@@ -1,0 +1,36 @@
+添加数据到sensor_info表中时，把time写入device_info表的lasttime字段
+delimiter //
+create trigger write_lasttime_trigger AFTER insert
+on office_center.sensor_info for each row
+BEGIN
+update device_info set lasttime=new.time where mac=new.mac;
+END//
+delimiter ;
+
+添加数据到usercompdev_info表中时，查找该用户的设备总数，设置number为总数
+delimiter //
+create trigger set_number_trigger BEFORE insert
+on office_center.usercompdev_info for each row
+BEGIN
+DECLARE num int(3);
+set new.number=(select count(name) from usercompdev_info where name=new.name)+1;
+END//
+delimiter ;
+
+添加数据到user_info表中时，把name写入threshold_info表中 （自动设置默认阀值）
+delimiter //
+create trigger set_threshold_trigger AFTER insert
+on office_center.user_info for each row
+BEGIN
+insert into threshold_info(name) values (new.name);
+END//
+delimiter ;
+
+EVENT：自动删除7天数据
+create  event delete_sensor_data
+on schedule every 1 day
+starts '2019-1-06 00:00:00'
+do delete from sensor_info where unix_timestamp(now())-time >=604800;
+
+//备份office_center库
+mysqldump -u root -p office_center > D:\mysqlbackups\office_center.sql

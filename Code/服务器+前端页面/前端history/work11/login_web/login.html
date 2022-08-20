@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+	<!--
+    	描述：
+    	login.js			登录时所用的方法
+    	background.js		背景及背景互动方法
+    	*jquery*.js			调用的jquery包
+    	bootstrap.min.css	按钮及边框样式
+    	mode.css			登录布局样式
+    -->
+	<head>
+		<meta charset="utf-8" />
+		<title>沃基环境监测系统</title>
+		
+        <!-- Javascript -->
+        <script src="../js/login/jquery-1.8.2.min.js"></script>
+        <script src="../js/login/supersized.3.2.7.min.js"></script>
+        <script src="../js/login/supersized-init.js"></script>
+        <script src="../js/login/scripts.js"></script>
+        <script src="../js/language/i18next.min.js"></script>
+        <script src="../js/language/language.js"></script>
+		<script type="text/javascript" src="../js/login/login.js"></script>
+		<!--<script type="text/x-jquery-tmpl"></script>-->
+		<!--<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>-->
+		
+		<!-- CSS -->
+        <!--<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>-->
+        <link rel="stylesheet" href="../css/login/reset.css">
+        <link rel="stylesheet" href="../css/login/supersized.css">
+        <link rel="stylesheet" href="../css/login/style.css">
+        
+        <!-- 网址标题logo -->
+        <link rel="shortcut icon" type="image/x-icon" href="../img/wlzy.png" media="screen" />
+        <!--<link href="img/logo.png" type="image/x-icon" rel="shortcut icon">-->
+	</head>
+
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script src="../js/desip.js" type="text/javascript"></script>
+	
+	<!--消息弹窗-->
+	<link href="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet" type="text/css" />
+<!--	<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>-->
+	<script src="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.js"></script>
+
+	<body>
+
+		<!--
+        	描述：鼠标互动动态图locale
+        -->
+		<script type="text/javascript" src="../js/login/background.js"></script>
+		
+		<!--
+        	描述：国际化
+        -->
+        <style>
+        	select {
+			    font-family: 'Audiowide';
+			    text-align: center;
+			    color: orangered;
+			    font-size: 7em;
+			    -webkit-transition: all 1.5s ease;
+			            transition: all 1.5s ease;
+			}
+			select:hover {
+			    color: orange;
+			    -webkit-animation: Glow 1.5s ease infinite alternate;
+			            animation: Glow 1.5s ease infinite alternate;
+			
+			}
+			@-webkit-keyframes Glow {
+			    from {
+			        text-shadow: 0 0 10px #fff,
+			                     0 0 20px #fff,
+			                     0 0 30px #fff,
+			                     0 0 40px orange,
+			                     0 0 70px orange,
+			                     0 0 80px orange,
+			                     0 0 100px orange,
+			                     0 0 150px orange;
+			    }
+			    to {
+			        text-shadow: 0 0 5px #fff,
+			                     0 0 10px #fff,
+			                     0 0 15px #fff,
+			                     0 0 20px orange,
+			                     0 0 35px orange,
+			                     0 0 40px orange,
+			                     0 0 50px orange,
+			                     0 0 75px orange;
+			    }
+			}
+			@keyframes Glow {
+			    from {
+			        text-shadow: 0 0 10px #fff,
+			                     0 0 20px #fff,
+			                     0 0 30px #fff,
+			                     0 0 40px orange,
+			                     0 0 70px orange,
+			                     0 0 80px orange,
+			                     0 0 100px orange,
+			                     0 0 150px orange;
+			    }
+			    to {
+			        text-shadow: 0 0 5px #fff,
+			                     0 0 10px #fff,
+			                     0 0 15px #fff,
+			                     0 0 20px orange,
+			                     0 0 35px orange,
+			                     0 0 40px orange,
+			                     0 0 50px orange,
+			                     0 0 75px orange;
+			    }
+			}
+			.select{
+			  	background-color: transparent;
+			  	border: solid 0px;
+			 	-webkit-appearance: initial;
+			} 
+
+        </style>
+        <div style="width: 100%;height: 45px;position:absolute;top: 0px; background-color:rgba(255,255,255,0.5);">
+
+        	
+        	
+        	<div style="position:absolute;right:0px;top: 0px;width: 90px;height: 45px;">
+    			<select id="language" class="select" style=" font-size:20px;width:90px;height:40px;" onchange="func()">
+					<option value="zh-CN">&nbsp;&nbsp;中文&nbsp;&nbsp;</option>
+					<option value="en-US">&nbsp;&nbsp;English&nbsp;&nbsp;</option>
+ 				</select>
+        	</div>
+		</div>
+		
+		<script>
+			var lan_local = "zh-CN"
+	        function localize(lng){
+	            var deferred = $.i18n.init({
+	                lng         : lng || 'zh-CN',      //翻译成的语言
+	                load        : 'current',           //加载当前设置的语言包
+	                getAsync    : false,               //是否异步调用语言包
+	                cookieName  : 'i18n',      //cookie的名称
+	                preload     : ['zh-CN', 'en-US'],  //预加载语言包
+	                fallbackLng : ['zh-CN', 'en-US'],  //如果没有设置，则默认为“开发”。如果打开，所有丢失的键/值将被翻译成该语言。
+	                resGetPath  : '../locale/__lng__/__ns__.json', // 加载资源的路径
+	                ns: { namespaces: ['language'], defaultNs: 'language'},             //加载的语言包
+	                useLocalStorage : false,                                              //是否将语言包存储在localstorage
+	                localStorageExpirationTime: 86400000                                  // 有效周期，单位ms。默认1周
+	            });
+	            /*console.log(deferred);*/
+	            return deferred;
+	        }
+			
+			function change(data)
+			{
+				localize(data).done(function(){ $('div.content').i18n();});
+			}
+			function func(){
+			 //获取被选中的option标签
+			 var vs = $('select  option:selected').val();
+			 lan_local = vs;
+			 localStorage.setItem('localLan', vs);
+			 change_lan(vs);
+			 change(vs);
+			}
+
+
+		</script>
+
+		
+			<!--
+            	描述：
+            	以上为登录界面布局
+            	主div的id:	box_log
+            	用户名id:	uname_log
+            	登录密码id:	upass_log
+            	登录报错id:	error_box_log
+            	
+            	使用方法			调用位置			简单介绍
+            	fnLogin()		js/login.js		判断登录时的用户名密码及与服务器交互
+            	chShift_n()		js/login.js		隐藏及显示div标签
+            -->
+			<div id="box_login" class="page-container" style="display: block;">
+					<div class="content">
+						<h1 data-i18n="language.title_log">登录</h1>
+					</div>
+				
+					<!--
+		            	描述：输入登录账号
+		            -->
+					<div>
+						<input id="uname_log" type="text" class="username" name="user" placeholder="请输入用户名">
+					</div>
+					<!--
+		            	描述：输入登录密码
+		            -->
+					<div>
+						<input id="upass_log" type="password" class="password" name="psw" placeholder="请输入密码">
+					</div>
+	
+					<div id="error_box_log" style="padding-top: 10px;"><br></div>
+					<!--
+		            	描述：登录注册按钮
+		            -->
+					<div class="content">
+						<button type="button" class="btn btn-primary" onclick="fnLogin(lan_local)" data-i18n="language.log_button">登录</button>
+					</div>
+					<div style="padding: 10px;width: 304px;margin: auto;">
+						<div style="float: left;">
+							<div class="content">
+								<a onclick="chShift_forget()" style="cursor: pointer;" data-i18n="language.log_tips">找回密码</a>
+							</div>
+						</div>
+						<div style="float: right;">
+							<div class="content">
+								<a onclick="chShift_n()" style="cursor: pointer;" data-i18n="language.log_tips">注册账号</a>
+							</div>
+						</div>
+					</div>
+			</div>
+
+			<!--
+            	描述：
+            	以上为注册界面布局
+            	主div的id:	box_reg
+            	用户名id:		uname_reg
+            	登录密码id:	upass_reg
+            	登录报错id:	error_box_reg
+            	
+            	使用方法			调用位置			简单介绍
+            	fnRegist()		js/login.js		判断注册时的用户名密码及与服务器交互
+            	chShift_b()		js/login.js		隐藏及显示div标签
+            -->
+			<div id="box_regist" class="page-container" style="display: none;">
+				<div id="header" >
+					<div class="content">
+						<h1 data-i18n="language.title_reg">注册</h1>
+					</div>  
+				</div>
+				
+				<div id="content">
+					<!--
+	                	描述：输入注册账号
+	                -->
+					<div>
+						<input id="uname_reg" type="text" class="username" name="user" placeholder="请输入用户名">
+					</div>
+					<!--
+	                	描述：输入注册密码
+	                -->
+					<div>
+						<input id="upass_reg" type="password" class="password" name="psw" placeholder="请输入密码">
+					</div>
+					<!--
+	                	描述：确认注册密码
+	                -->
+					<div>
+						<input id="upass_again" type="password" class="password" placeholder="再次输入密码">
+					</div>
+					
+					<!--
+	                	描述：确认注册密码
+	                -->
+					<div>
+						<input id="uemail" type="text" class="username" placeholder="请输入邮箱">
+					</div>
+
+					<div id="error_box_reg" style="padding-top: 10px;"><br></div>
+					<!--
+	                	描述：注册信息按钮
+	                -->
+					<div class="content">
+						<button type="button" class="btn btn-primary" onclick="fnRegist(lan_local)" data-i18n = "language.reg_button">注册</button>
+					</div>
+
+					<div style="padding: 10px;width: 304px;margin: auto;">
+						<div style="float: right;">
+							<div class="content">
+								<a onclick="chShift_b()" style="cursor: pointer;" data-i18n = "language.reg_tips">返回登陆界面</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<!--忘记密码box-->
+			<div id="box_forget" class="page-container" style="display: none;">
+					<div class="content">
+						<h1 data-i18n="language.title_log">找回密码</h1>
+					</div>
+				
+					<!--
+		            	描述：输入账号
+		            -->
+					<div>
+						<input id="uname_fog" type="text" class="username" name="user" placeholder="请输入用户名">
+					</div>
+					<!--
+		            	描述：输入邮箱
+		            -->
+					<div>
+						<input id="uemail_fog" type="text" class="username" name="psw" placeholder="请输入注册时的邮箱">
+					</div>
+	
+					<div id="error_box_fog" style="padding-top: 10px;"><br></div>
+					<!--
+		            	描述：登录注册按钮
+		            -->
+					<div class="content">
+						<button type="button" class="btn btn-primary" onclick="fnForget1(lan_local)" data-i18n="language.log_button">发送验证邮件</button>
+					</div>
+					<div style="padding: 10px;width: 304px;margin: auto;">
+						<div style="float: right;">
+							<div class="content">
+								<a onclick="chShift_b()" style="cursor: pointer;" data-i18n="language.log_tips">返回登录界面</a>
+							</div>
+						</div>
+					</div>
+			</div>
+			
+			<!--找回密码第二页面-->
+			<div id="box_forget2" class="page-container" style="display: none;">
+					<div class="content">
+						<h1 data-i18n="language.title_log">找回密码</h1>
+					</div>
+				
+					<!--
+		            	描述：输入登录账号
+		            -->
+					<div>
+						<input id="upass_fog2" type="password" class="password" name="psw" placeholder="请输入新密码">
+					</div>
+					<!--
+		            	描述：输入登录密码
+		            -->
+					<div>
+						<input id="upass_fog2-2" type="password" class="password" name="psw" placeholder="请再次输入新密码">
+					</div>
+					
+					<!--输入验证码-->
+					
+					<div>
+						<input id="ucode_fog2" type="text" class="username" name="psw" placeholder="请输入收到的验证码">
+					</div>
+	
+					<div id="error_box_fog2" style="padding-top: 10px;"><br></div>
+					<!--
+		            	描述：登录注册按钮
+		            -->
+					<div class="content">
+						<button type="button" class="btn btn-primary" onclick="fnForget2(lan_local)" data-i18n="language.log_button">完成找回</button>
+					</div>
+					<div style="padding: 10px;width: 304px;margin: auto;">
+						<div style="float: right;">
+							<div class="content">
+								<a onclick="chShift_b()" style="cursor: pointer;" data-i18n="language.log_tips">返回登录界面</a>
+							</div>
+						</div>
+					</div>
+			</div>
+			
+	</body>
+</html>

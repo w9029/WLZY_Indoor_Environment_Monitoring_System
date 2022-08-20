@@ -1,0 +1,11 @@
+3 网络连接NetConnect： ConnectBroken 、ConnectSuccess、ConnectFailed 
+3 传感器Sensor： SensorError、SensorTimeOut 
+3 数据库DataBase： DataBaseError
+
+2 摄像头开操作Camera：CameraOpen CameraClose
+
+1 用户登录User：UserLogin
+1 查数据Data： SearchData
+
+格式 ：
+等级 操作时间 操作类型 详细描述 

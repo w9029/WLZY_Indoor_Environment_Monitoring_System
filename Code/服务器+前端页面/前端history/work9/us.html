@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>环境监测系统</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />    
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+    
+    
+    <link href="./css/font-awesome.css" rel="stylesheet" />
+    
+    <link href="./css/adminia.css" rel="stylesheet" /> 
+    <link href="./css/adminia-responsive.css" rel="stylesheet" /> 
+    
+    <link href="./css/pages/dashboard.css" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+		
+		<script src="js/login/jquery-1.8.2.min.js"></script>
+		
+		<script src="js/desip.js" type="text/javascript"></script>
+		
+		<link rel="shortcut icon" type="image/x-icon" href="./img/logo/eye.png" media="screen" />
+		
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+	
+<div class="navbar navbar-fixed-top">
+	
+	<div class="navbar-inner">
+		
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 				
+			</a>
+			
+			<a class="brand" href="./">
+				<img src="img/logo/logo.png" style="width: 22px;"/>
+				环境监测系统
+			</a>
+			
+			
+			<div class="nav-collapse">
+			
+				<ul class="nav pull-right">
+					<!--<li>
+						<a href="#"><span class="badge badge-warning">7</span></a>
+					</li>-->
+					
+					<li class="divider-vertical"></li>
+					
+					<li class="dropdown">
+						
+						<a data-toggle="dropdown" class="dropdown-toggle " href="#">
+							<img src="img/touxiang.png" width="22px" height="22px" /> <b class="caret"></b>							
+						</a>
+						
+						<ul class="dropdown-menu">
+							<!--<li>
+								<a href="./account.html"><i class="icon-user"></i> Account Setting  </a>
+							</li>-->
+							
+							<li>
+								<a href="./change_password.html"><i class="icon-lock"></i> 修改密码/a>
+							</li>
+							
+							<li class="divider"></li>
+							
+							<li>
+								<a href="login_web/login.html"><i class="icon-off"></i> 注销</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+			</div> <!-- /nav-collapse -->
+			
+		</div> <!-- /container -->
+		
+	</div> <!-- /navbar-inner -->
+	
+</div> <!-- /navbar -->
+
+
+<div id="content">
+	
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="span3">
+				
+				<div class="account-container">
+					<div class="account-details">
+				    <!--小图标-->
+					  <i class="fa fa-address-card-o" style="font-size:20px; aria-hidden=true"></i>
+						<span id="username_span" class="account-name">user name</span>
+						<script type="text/javascript">
+								var username;
+								
+								function getCookie(cookieName) {
+								    var strCookie = document.cookie;
+								    var arrCookie = strCookie.split("; ");
+								    for(var i = 0; i < arrCookie.length; i++){
+								        var arr = arrCookie[i].split("=");
+								        if(cookieName == arr[0]){
+								            return arr[1];
+								        }
+								    }
+								    return "";
+								}
+								
+								username=getCookie("username");
+
+								document.getElementById("username_span").innerHTML=username;
+	
+						</script>
+						<span class="account-role">您好</span>
+					</div>
+				</div> 
+				
+				<hr />
+				
+				<ul id="main-nav" class="nav nav-tabs nav-stacked">
+					
+					<li>
+						<a href="./index.html">
+							<i class="fa fa-child" style="font-size:20px; aria-hidden=true"></i>
+							用户信息		
+						</a>
+					</li>
+					
+					<li>
+						<a href="./monitor.html">
+							<i class="fa fa-clock-o" style="font-size:20px; aria-hidden=true"></i>
+							实时监测
+						</a>
+					</li>
+					
+					<li>
+						<a href="./warning.html">
+							<i class="fa fa-bell-o" style="font-size:20px; aria-hidden=true"></i>
+							预警管理
+						</a>
+					</li>
+					
+					<li>
+						<a href="./history.html">
+							<i class="fa fa-calendar" style="font-size:20px; aria-hidden=true"></i>
+							历史信息	
+						</a>
+					</li>
+					
+					<li>
+						<a href="./video.html">
+							<i class="fa fa-video-camera" style="font-size:20px; aria-hidden=true"></i>
+							视频监测
+						</a>
+					</li>
+					
+					<li class="active">
+						<a href="./us.html">
+							<i class="fa fa-users" style="font-size:20px; aria-hidden=true"></i>
+							关于我们
+						</a>
+					</li>
+					
+				</ul>	
+				
+				<hr />
+				
+				<div class="sidebar-extra">
+					<p>
+						使用中如果遇到问题，请通过以下联系方式以得到技术支持：
+						<br />
+						QQ:578824311
+						<br />
+						邮箱:578824311@qq.com
+						<br />
+						电话:18851730678
+					
+					</p>
+				</div> <!-- .sidebar-extra -->
+				
+				<br />
+		
+			</div> <!-- /span3 -->
+			
+			
+			
+			<div class="span9">
+				
+				<h1 class="page-title">
+					<i class="icon-home"></i>
+					关于我们	
+				</h1>
+				
+				<div class="stat-container">
+										
+					<div class="stat-holder">						
+						<div class="stat">							
+							用户名							
+							<span id="username_span2">name</span>		
+							<script type="text/javascript">
+								document.getElementById("username_span2").innerHTML=username;
+	
+							</script>						
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+					<div class="stat-holder">						
+						<div class="stat">								
+							注册时间
+							<span id="registTime">0000.0.0</span>		
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+					<div class="stat-holder">						
+						<div class="stat">							
+							您拥有的设备							
+							<span id="devCount">0</span>							
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+					<div class="stat-holder">						
+						<div class="stat">							
+							正在运行的设备							
+							<span id="runningCount">0</span>							
+						</div> <!-- /stat -->						
+					</div> <!-- /stat-holder -->
+					
+				</div> <!-- /stat-container -->
+				
+				<script type="text/javascript">
+					
+					var ajaxParams={};
+					
+					ajaxParams['name']=username;//传字符串到String
+					jQuery.ajax({ 
+						type:"POST",
+						url:"http://"+desip+":8080/dev/find",
+						data:ajaxParams,
+						dataType:"text",
+						success:function(data){
+							
+							var runningcount=0;
+							var s="";
+							var Array_devs = JSON.parse(data);
+							
+							//alert(Array_devs[0].lasttime);
+							//console.log(Array_devs[0]);
+							if(Array_devs != null)
+							for(var i=0;i<Array_devs.length;i++)
+							{
+								var Status="";
+								
+								if(Array_devs[i].status == 1)
+								{
+									Status="正在运行";
+									runningcount++;
+								}
+								else Status="与服务器断开连接";
+								s=s+"<tr><td>" + Array_devs[i].number +"</td><td>" + Array_devs[i].mac +"</td><td>"+ Status +"</td><td>" + Array_devs[i].lasttime +"</td></tr>";
+							}
+							//alert(Array_devs);
+							if(Array_devs!=null && Array_devs.length > 0)
+							{
+								
+								document.getElementById("devCount").innerHTML = Array_devs.length;
+								document.getElementById("runningCount").innerHTML = runningcount;
+							}
+						}
+					})
+					
+					ajaxParams['name']=username;//传字符串到String
+					jQuery.ajax({ 
+						type:"GET",
+						url:"http://"+desip+":8080/user/regtime",
+						data:ajaxParams,
+						dataType:"text",
+						success:function(data){
+							document.getElementById("registTime").innerHTML = data.split(" ")[0];
+						}
+					})
+					
+				</script>
+				
+				
+				<div class="row">
+					
+					<div class="span5" style="width: 96.5%;">
+									
+						<div class="widget">
+							
+							<div class="widget-header">
+								<h3>产品介绍</h3>
+							</div> <!-- /widget-header -->
+																
+							<div class="widget-content">
+								<p>
+									本产品是一套完备的多用户——多设备环境监测系统，您可以通过本产品来获取并展示您的设备监测到的数据，
+									并得到一些对当前环境情况的分析结果，具体有以下功能：
+									<br />
+									1.实时环境数据的监测：本功能可以向用户展示当前的实时数据，并在达到危险数值时进行警报。
+									<br />
+									2.历史数据的查询：本功能可以以折线图的形式直观地向用户展示历史数据。
+									<br />
+									3.实时视频监测：本功能可以向用户展示实时的视频监控，并提供远程开启/关闭功能以精确控制用户的设备。
+									
+								</p>
+							</div> <!-- /widget-content -->
+							
+						</div> <!-- /widget -->
+						
+					</div> <!-- /span5 -->
+		
+					<!--<div class="span4">
+						
+						<div class="widget">
+							
+							<div class="widget-header">
+								<h3>成员介绍</h3>
+							</div>
+																
+							<div class="widget-content">
+								<p>
+									
+								
+								</p>
+							</div> 
+							
+						</div>
+					</div>-->
+					
+				</div>
+				
+			</div> <!-- /span9 -->
+			
+			
+		</div> <!-- /row -->
+		
+	</div> <!-- /container -->
+	
+</div> <!-- /content -->
+					
+	
+<div id="footer">
+	<center>
+		<div class="container">				
+			<hr />
+			<p>
+				环境监测系统 
+				<a href="http://www.baidu.com/" target="_blank" title="a">联系我们</a> 
+			</p>
+		</div> <!-- /container -->
+		
+	</center>
+	
+</div> <!-- /footer -->
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./js/jquery-1.7.2.min.js"></script>
+<script src="./js/excanvas.min.js"></script>
+<script src="./js/jquery.flot.js"></script>
+<script src="./js/jquery.flot.pie.js"></script>
+<script src="./js/jquery.flot.orderBars.js"></script>
+<script src="./js/jquery.flot.resize.js"></script>
+
+
+<script src="./js/bootstrap.js"></script>
+<script src="./js/charts/bar.js"></script>
+
+  </body>
+</html>
